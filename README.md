@@ -42,13 +42,7 @@ AWS EC2
 
 https://github.com/AyoubFanaoui/zabbix-aws-docker-monitoring.git
 cd zabbix-aws-docker-monitoring
-2. Configurer les variables d’environnement
-Créer un fichier .env à la racine :
 
-POSTGRES_DB=zabbix
-POSTGRES_USER=zabbix
-POSTGRES_PASSWORD=zabbix_pass
-ZABBIX_SERVER_HOST=zabbix-server
 3. Lancer les services Docker
 docker compose up -d
 
