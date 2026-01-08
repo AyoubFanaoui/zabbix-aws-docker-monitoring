@@ -40,4 +40,6 @@ cd zabbix-aws-docker-monitoring
 
 3. Lancer les services Docker
 docker compose up -d
+<img width="745" height="372" alt="image" src="https://github.com/user-attachments/assets/515b3f39-68a2-4dfc-9906-89b8cbdb75bd" />
+
 
