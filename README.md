@@ -9,16 +9,7 @@ L’objectif est de surveiller des machines **Linux et Windows** en temps réel,
 ## Architecture
 
 ### Diagramme général
-AWS EC2
-├─ Zabbix Server (Docker)
-|
-│ ├─ PostgreSQL (Docker)
-|
-│ └─ Zabbix Web Frontend (Docker)
-|
-├─ Client Linux (Zabbix Agent)
-|
-└─ Client Windows (Zabbix Agent)
+<img width="342" height="205" alt="image" src="https://github.com/user-attachments/assets/46d7995a-7a37-4cb5-89f4-4c271f26402d" />
 
 
 ### Composants principaux
