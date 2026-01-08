@@ -1,0 +1,43 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: zabbix
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  zabbix-server-pgsql:
+    image: zabbix/zabbix-server-pgsql:ubuntu-7.4-latest
+    container_name: zabbix-server-pgsql
+    depends_on:
+      - postgres
+    environment:
+      DB_SERVER_HOST: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: zabbix
+    ports:
+      - "10051:10051"
+  zabbix-web-pgsql:
+    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-7.4-latest
+    container_name: zabbix-web-pgsql
+    depends_on:
+      - zabbix-server-pgsql
+      - postgres
+    environment:
+      ZBX_SERVER_HOST: zabbix-server-pgsql
+      DB_SERVER_HOST: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: zabbix
+      PHP_TZ: Europe/Paris
+    ports:
+      - "80:8080"
+      - "443:8443"
